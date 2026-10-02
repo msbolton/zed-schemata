@@ -1,0 +1,14 @@
+name = "Schemata"
+grammar = "schemata"
+path_suffixes = ["schemata"]
+line_comments = ["// ", "/// "]
+block_comment = { start = "/*", prefix = "", end = "*/", tab_size = 0 }
+tab_size = 2
+hard_tabs = false
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "<", end = ">", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "/*", end = " */", close = true, newline = false, not_in = ["string", "comment"] },
+]

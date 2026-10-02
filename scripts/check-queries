@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Runs every query of the extension against a real schema file with the pinned grammar, so a query
+# that names a node the grammar does not have fails here and not in the editor.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+repository=$(sed -n '/^\[grammars\.schemata\]/,/^\[/s/^repository = "\(.*\)"/\1/p' extension.toml)
+rev=$(sed -n '/^\[grammars\.schemata\]/,/^\[/s/^rev = "\(.*\)"/\1/p' extension.toml)
+source="${GRAMMAR_DIR:-}"
+
+if [ -z "$source" ]; then
+  rm -rf grammar
+  git clone --quiet "$repository" grammar
+  git -C grammar checkout --quiet "$rev"
+  source=grammar
+fi
+
+for query in languages/schemata/*.scm; do
+  echo "checking $query"
+  (cd "$source" && npx --yes tree-sitter-cli@0.25.3 query "$OLDPWD/$query" "$OLDPWD/test/orders.schemata" > /dev/null)
+done
+echo "all queries compile against $rev"
