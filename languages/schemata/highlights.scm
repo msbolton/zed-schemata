@@ -1,3 +1,4 @@
+; Sibling of queries/highlights.scm in https://github.com/msbolton/tree-sitter-schemata; carry a fix to both.
 (comment) @comment
 (doc_comment) @comment.doc
 

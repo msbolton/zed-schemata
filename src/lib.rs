@@ -33,7 +33,7 @@ mod extension {
             Ok(zed::Command {
                 command,
                 args,
-                env: worktree.shell_env(),
+                env: command::merge_env(worktree.shell_env(), binary.and_then(|binary| binary.env)),
             })
         }
 
@@ -52,11 +52,10 @@ mod extension {
             _language_server_id: &LanguageServerId,
             worktree: &zed::Worktree,
         ) -> Result<Option<serde_json::Value>> {
-            // The server reads its options from a `schemata` object in the settings it is sent.
             Ok(LspSettings::for_worktree(SERVER, worktree)
                 .ok()
                 .and_then(|settings| settings.settings)
-                .map(|settings| serde_json::json!({ "schemata": settings })))
+                .map(command::workspace_configuration))
         }
     }
 

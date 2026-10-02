@@ -33,6 +33,10 @@ In Zed's `settings.json`:
 | `binary.path` | The binary to run. Without it, `schemata` is looked up on `PATH`. |
 | `initialization_options.roots` | Directories, relative to the project, whose whole subtree is one schema set. Without roots, each directory is its own set. |
 | `initialization_options.strict` | Report implicit ordinals as errors. |
+| `settings` | `lsp.schemata.settings` takes the same `roots` and `strict` and reaches the server without a restart. |
+
+Zed formats `.schemata` files on save through the server by default; to turn that off, set
+`"languages": { "Schemata": { "format_on_save": "off" } }`.
 
 If the server does not start, open Zed's log ("zed: open log"). A compiler older than 0.8.0 has
 no `lsp` command and exits at once.
