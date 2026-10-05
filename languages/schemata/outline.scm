@@ -18,8 +18,15 @@
   "alias" @context
   name: (identifier) @name) @item
 
+(service_declaration
+  "service" @context
+  name: (identifier) @name) @item
+
 (field
   name: (identifier) @name) @item
 
 (enum_value
+  name: (identifier) @name) @item
+
+(operation
   name: (identifier) @name) @item

@@ -33,6 +33,10 @@
 (alias_declaration name: (identifier) @type)
 (field name: (identifier) @property)
 (enum_value name: (identifier) @variant)
+(service_declaration name: (identifier) @type)
+(operation name: (identifier) @function)
+
+(http_binding verb: (identifier) @keyword)
 
 (type name: (qualified_name (identifier) @type))
 ((type name: (qualified_name . (identifier) @type.builtin .))

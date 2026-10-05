@@ -41,3 +41,11 @@ record Order {
     #3 country: string(min = 2, max = 2)
   }
 }
+
+/// Place and read orders.
+service Orders {
+  #1 get(uuid): Order  get "/orders/{id}"
+  #2 list(): stream Order  get "/orders"
+  #3 cancel(uuid)  delete "/orders/{id}"
+  reserved #4, "archive"
+}
