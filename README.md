@@ -6,7 +6,7 @@ diagnostics as you type, go to definition, hover, find references, rename, and f
 
 ## Install
 
-1. Install the compiler, version 0.8.0 or later: `brew install msbolton/schemata/schemata`, or a
+1. Install the compiler, version 2.0.0 or later: `brew install msbolton/schemata/schemata`, or a
    binary from the [releases](https://github.com/msbolton/Schemata/releases). The language server
    is the `schemata lsp` command of that binary.
 2. Clone this repository.
@@ -39,7 +39,8 @@ Zed formats `.schemata` files on save through the server by default; to turn tha
 `"languages": { "Schemata": { "format_on_save": "off" } }`.
 
 If the server does not start, open Zed's log ("zed: open log"). A compiler older than 0.8.0 has
-no `lsp` command and exits at once.
+no `lsp` command and exits at once. This extension highlights the 2.0 syntax; a 1.x compiler reports
+every 2.0 file as a syntax error, and `schemata upgrade` rewrites a 1.x file to 2.0.
 
 The compiler's guide describes what the server does, how schema sets work, and what happens
 while a file does not parse.

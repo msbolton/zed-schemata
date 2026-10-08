@@ -1,9 +1,9 @@
-(namespace_declaration
-  "namespace" @context
+(schema_declaration
+  "schema" @context
   name: (qualified_name) @name) @item
 
-(record_declaration
-  "record" @context
+(model_declaration
+  "model" @context
   name: (identifier) @name) @item
 
 (enum_declaration
