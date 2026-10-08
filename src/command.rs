@@ -7,7 +7,7 @@ use std::collections::HashMap;
 /// Shown when no binary can be found.
 pub const NOT_FOUND: &str = "schemata was not found on PATH. Install it with \"brew install \
 msbolton/schemata/schemata\", or set lsp.schemata.binary.path. The language server needs \
-schemata 0.8.0 or later.";
+schemata 2.0.0 or later.";
 
 /// The command and arguments to start the server with: the configured path when one is set,
 /// otherwise the binary found on PATH; the configured arguments, otherwise `lsp`.

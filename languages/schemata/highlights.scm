@@ -3,10 +3,10 @@
 (doc_comment) @comment.doc
 
 [
-  "namespace"
+  "schema"
   "import"
   "as"
-  "record"
+  "model"
   "enum"
   "union"
   "alias"
@@ -23,11 +23,11 @@
 (escape_sequence) @string.escape
 (ordinal) @constant
 
-(namespace_declaration name: (qualified_name (identifier) @namespace))
-(import_declaration namespace: (qualified_name (identifier) @namespace))
+(schema_declaration name: (qualified_name (identifier) @namespace))
+(import_declaration schema: (qualified_name (identifier) @namespace))
 (import_declaration alias: (identifier) @namespace)
 
-(record_declaration name: (identifier) @type)
+(model_declaration name: (identifier) @type)
 (enum_declaration name: (identifier) @type)
 (union_declaration name: (identifier) @type)
 (alias_declaration name: (identifier) @type)
@@ -40,16 +40,22 @@
 
 (type name: (qualified_name (identifier) @type))
 ((type name: (qualified_name . (identifier) @type.builtin .))
-  (#match? @type.builtin "^(bool|int32|int64|float32|float64|decimal|string|bytes|uuid|date|time|instant|duration|list|map)$"))
+  (#match? @type.builtin "^(bool|int32|int64|float32|float64|decimal|string|bytes|uuid|date|time|instant|duration|map)$"))
 
 (field default: (identifier) @constant)
-(refinement key: (identifier) @property)
 
-(annotation "@" @attribute)
-(annotation name: (identifier) @attribute)
-(annotation_argument key: (identifier) @property)
+(option name: (identifier) @property)
+
+(attribute "@" @attribute)
+(attribute name: (identifier) @attribute)
+(block_attribute "@@" @attribute)
+(block_attribute name: (identifier) @attribute)
+(attribute_argument key: (identifier) @property)
+(attribute_argument !key value: (identifier) @property)
+(attribute_argument key: (identifier) value: (identifier) @constant)
 (name_tuple (identifier) @property)
 
-["{" "}" "(" ")" "<" ">"] @punctuation.bracket
+["{" "}" "(" ")" "<" ">" "[" "]"] @punctuation.bracket
 ["," "." ":"] @punctuation.delimiter
-["=" "|" "?" ".."] @operator
+["=" "|" ".."] @operator
+(nullable) @operator
