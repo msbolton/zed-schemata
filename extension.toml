@@ -1,6 +1,6 @@
 id = "schemata"
 name = "Schemata"
-version = "2.0.0"
+version = "2.1.0"
 schema_version = 1
 authors = ["Michael Bolton"]
 description = "Schemata schema language: highlighting, outline, and the schemata language server."
@@ -8,7 +8,7 @@ repository = "https://github.com/msbolton/zed-schemata"
 
 [grammars.schemata]
 repository = "https://github.com/msbolton/tree-sitter-schemata"
-rev = "66656c9b1fb1f049844ec355abf45da592447729"
+rev = "4ecc0ae5d0dd633a0218adc5f6f276d6d98bbdcf"
 
 [language_servers.schemata]
 name = "Schemata"
