@@ -8,7 +8,7 @@ repository = "https://github.com/msbolton/zed-schemata"
 
 [grammars.schemata]
 repository = "https://github.com/msbolton/tree-sitter-schemata"
-rev = "d072380572a0a94e8fbb460386c2754f1eaa1114"
+rev = "d72885e15009182586bb6f21cd2046f484d8442c"
 
 [language_servers.schemata]
 name = "Schemata"

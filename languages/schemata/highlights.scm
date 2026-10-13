@@ -39,7 +39,7 @@
 (http_binding verb: (identifier) @keyword)
 
 (errors_clause keyword: (identifier) @keyword)
-(error_response code: (identifier) @constant)
+(error_response "default" @constant)
 
 (type name: (qualified_name (identifier) @type))
 ((type name: (qualified_name . (identifier) @type.builtin .))
