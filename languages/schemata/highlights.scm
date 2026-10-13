@@ -38,6 +38,9 @@
 
 (http_binding verb: (identifier) @keyword)
 
+(errors_clause keyword: (identifier) @keyword)
+(error_response code: (identifier) @constant)
+
 (type name: (qualified_name (identifier) @type))
 ((type name: (qualified_name . (identifier) @type.builtin .))
   (#match? @type.builtin "^(bool|int32|int64|float32|float64|decimal|string|bytes|uuid|date|time|instant|duration|map)$"))
