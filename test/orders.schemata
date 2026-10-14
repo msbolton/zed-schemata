@@ -41,8 +41,12 @@ model Order {
 
 /// Place and read orders.
 service Orders {
-  #1 get(uuid): Order  get "/orders/{id}"
+  errors { 400 Problem  default }
+  #1 get(uuid): Order  get "/orders/{id}"  errors { 404 Problem }
   #2 list(): stream Order  get "/orders"
-  #3 cancel(uuid)  delete "/orders/{id}"
+  #3 cancel(uuid)  delete "/orders/{id}" 204  errors {
+    409 Problem
+    503
+  }
   reserved #4, "archive"
 }
